@@ -1,0 +1,59 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>スライドショー</title>
+	<script>
+	/* 値定義 */
+	let value = 0;
+	let show = "";
+	
+	/* スタートボタンの関数 */
+	function start(){
+	show = setInterval(showImage,2000);
+	this.disabled = true;
+	};
+	
+	/* ストップボタンの関数 */
+	function stop(){
+	clearInterval(show);
+	document.getElementById("start").disabled = false;
+	};
+	
+	/* スライドショーを行う関数 */
+	function showImage(){
+		let htmlstr = "";
+			if(value == 5){
+				value = 1;
+				}else{
+				value += 1;
+				}
+		htmlstr = "<img src ='image/image" + value + ".jpg'  width='350' height='250' >";
+		document.getElementById("pictures").innerHTML = htmlstr;
+	};
+	
+	/* ボタン関数 */
+	window.onload = function() {
+		document.getElementById("start").onclick = start;
+		document.getElementById("stop").onclick = stop;
+	};
+	</script>
+	<style>
+	div#pictures{
+	width: 350px;
+	height: 250px;
+	border :solid 1px;
+	text-align: center;
+	font-size: 40px;
+	color: brown;
+	}
+	</style>
+</head>
+<body>
+	<h1>Javascriptを用いたスライドショー</h1>
+	<div id="pictures">はじめ</div>
+	<button id="start">START</button>
+	<button id="stop">STOP</button>
+	
+	<a href="index.html">戻る</a>
+</body>
+</html>
